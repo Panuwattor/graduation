@@ -43,10 +43,42 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="/" class="nav-link">Home</a>
                 </li>
+                <form action="/search/graduate" class="form-inline ml-3">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" name="value" type="search" placeholder="ค้นหาบัณฑิต" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </ul>
 
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-user"></i>
+                    <span class="hidden-xs"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <div class="card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img src="/user.png" alt="User profile picture" class="profile-user-img img-fluid img-circle">
+                            </div>
+                            <h3 class="profile-username text-center">{{auth()->user()->name}}</h3>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item dropdown-footer"><i class="fa fa-btn fa-sign-out"></i> Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+            </li>
+            </ul>
             <!-- SEARCH FORM -->
             <!-- <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -161,10 +193,10 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="/admin/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+                        <img src="/user.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Admin Manage</a>
+                        <a href="#" class="d-block">{{auth()->user()->name}}</a>
                     </div>
                 </div>
 
@@ -172,7 +204,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="/branchs" class="nav-link  {{ (request()->is('branchs')) ? 'active' : '' }}" >
+                            <a href="/branchs" class="nav-link  {{ (request()->is('branchs')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>สาขาปริญญา</p>
                             </a>
@@ -189,6 +221,39 @@
                                 <p>รายชื่อตามสาขาปริญญา</p>
                             </a>
                         </li>
+                        @can('user_manager')
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link {{ (request()->is('graduate/admin/users')) ? 'active' : '' }} {{ (request()->is('graduate/admin/permissions')) ? 'active' : '' }} {{ (request()->is('graduate/admin/roles')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    User
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: {{ (request()->is('graduate/admin/users')) ? 'block' : '' }} {{ (request()->is('graduate/admin/permissions')) ? 'block' : '' }} {{ (request()->is('graduate/admin/roles')) ? 'block' : '' }};">
+                                <li class="nav-item">
+                                    <a href="/graduate/admin/users" class="nav-link {{ (request()->is('graduate/admin/users')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>รายชื่อ User</p>
+                                    </a>
+                                </li>
+                                @role('developer')
+                                <li class="nav-item">
+                                    <a href="/graduate/admin/roles" class="nav-link {{ (request()->is('graduate/admin/roles')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>ตำแหน่ง</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/graduate/admin/permissions" class="nav-link {{ (request()->is('graduate/admin/permissions')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>สิทธิ์การใช้งาน</p>
+                                    </a>
+                                </li>
+                                @endrole
+                            </ul>
+                        </li>
+                        @endcan
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

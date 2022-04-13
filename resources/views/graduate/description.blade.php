@@ -24,115 +24,48 @@
             <div class="card card-default">
                 <div class="card-header">
                     <h3 class="card-title">รายการรายชื่อบัณฑิต <a href="#">{{$description}}</a></h3>
-                    <!-- <div class="card-tools">
-                        <button type="button" class="btn btn-block btn-outline-success btn-sm" data-toggle="modal" data-target="#modal-add">เพิ่มรายชื่อบัณฑิต</button>
-                    </div>
-                    <div class="modal fade" id="modal-add">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">เพิ่มรายชื่อบัณฑิต</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form action="/graduate" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="inputEmail3">ลำดับ บัณฑิต</label>
-                                                    <input required type="text" class="form-control" id="numberGraduate" name="numberGraduate" placeholder="studentCode">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail3">รหัสนักศึกษา</label>
-                                                    <input required type="text" class="form-control" id="studentCode" name="studentCode" placeholder="studentCode">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail3">ชื่อบัณฑิต</label>
-                                                    <input required type="text" class="form-control" id="name" name="name" placeholder="name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail3">ปริญญาบัณฑิต</label>
-                                                    <input required type="text" class="form-control" id="description" name="description" placeholder="description">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="inputEmail3">ประเภทรูป</label>
-                                                    <select class="form-control" name="type_photo">
-                                                        <option value="1">URL</option>
-                                                        <option value="2">Server</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail3">รูปเมื่อเลือก URL</label>
-                                                    <input required type="text" class="form-control" id="photo_url" name="photo_url" placeholder="URL">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail3">รูปเมื่อเลือก Server</label> <code>W249px X H314</code>
-                                                    <input type="file" class="form-control" name="photo_server" multiple>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail3">สถานะ</label>
-                                                    <select class="form-control" name="status">
-                                                        <option value="1">ใช้งาน</option>
-                                                        <option value="0">ยกเลิก</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="card-body">
+                {{$graduates->links()}}
                     <form action="/graduate/branch/{{$description}}/prints" method="post">
                         @csrf
-                    <button type="submit" class="btn btn-outline-success btn-sm"><i class="fa fa-print"></i> Print</button>
-                    <div class="table-responsive p-0">
-                        <table id="example1" class="table table-hover text-nowrap">
-                            <thead>
-                                <tr class="text-center">
-                                    <th>
-                                        <label>
-                                            <input type="checkbox" id="select-all">
-                                            ทั้งหมด
-                                        </label>
-                                    </th>
-                                    <th>no</th>
-                                    <th>name</th>
-                                    <th>studentCode</th>
-                                    <th>description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($graduates as $graduate)
-                                <tr class="text-center">
-                                    <td>
-                                        <label>
-                                            <input name="ids[]" class="checkbox_id" type="checkbox" value="{{$graduate->id}}">
-                                            เลือก
-                                        </label>
-                                    </td>
-                                    <td>{{$graduate->numberGraduate}}</td>
-                                    <td>{{$graduate->name}}</td>
-                                    <td>{{$graduate->studentCode}}</td>
-                                    <td>{{$graduate->description}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                        <button type="submit" class="btn btn-outline-success btn-sm"><i class="fa fa-print"></i> Print</button>
+                        <div class="table-responsive p-0">
+                            <table id="example1" class="table table-hover text-nowrap">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>
+                                            <label>
+                                                <input type="checkbox" id="select-all">
+                                                ทั้งหมด
+                                            </label>
+                                        </th>
+                                        <th>no</th>
+                                        <th>name</th>
+                                        <th>studentCode</th>
+                                        <th>description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($graduates as $graduate)
+                                    <tr class="text-center">
+                                        <td>
+                                            <label>
+                                                <input name="ids[]" class="checkbox_id" type="checkbox" value="{{$graduate->id}}">
+                                                เลือก
+                                            </label>
+                                        </td>
+                                        <td>{{$graduate->numberGraduate}}</td>
+                                        <td>{{$graduate->name}}</td>
+                                        <td>{{$graduate->studentCode}}</td>
+                                        <td>{{$graduate->description}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </form>
+                    {{$graduates->links()}}
                 </div>
             </div>
         </div>
@@ -158,18 +91,18 @@
 <script src="https://taweechai-bucket.s3-ap-southeast-1.amazonaws.com/upvc/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="https://taweechai-bucket.s3-ap-southeast-1.amazonaws.com/upvc/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script>
-    $('#select-all').click(function(event) {   
-        if(this.checked) {
+    $('#select-all').click(function(event) {
+        if (this.checked) {
             // Iterate each checkbox
             $('.checkbox_id').each(function() {
-                this.checked = true;                        
+                this.checked = true;
             });
         } else {
             $('.checkbox_id').each(function() {
-                this.checked = false;                       
+                this.checked = false;
             });
         }
-    }); 
+    });
     $(function() {
         $('#example1').DataTable({
             "paging": false,

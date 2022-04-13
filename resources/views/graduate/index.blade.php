@@ -24,7 +24,39 @@
                 <div class="card-header">
                     <h3 class="card-title">รายการรายชื่อบัณฑิต</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-block btn-outline-success btn-sm" data-toggle="modal" data-target="#modal-add">เพิ่มรายชื่อบัณฑิต</button>
+                        <button type="button" class="btn btn-outline-success btn-sm " data-toggle="modal" data-target="#modal-ImPortExcel">ImPortExcel</button>
+                        <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#modal-add">เพิ่มรายชื่อบัณฑิต</button>
+                    </div>
+
+                    <div class="modal fade" id="modal-ImPortExcel">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">ImPortExcel</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/graduate/import/excel" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inputEmail3">ไฟล์</label> <code>เฉพาะไฟล์ Excel เท่านั้น</code>
+                                                    <input type="file" class="form-control" name="excel_file" multiple required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
                     </div>
                     <div class="modal fade" id="modal-add">
                         <div class="modal-dialog modal-lg">
@@ -95,6 +127,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive p-0">
+                        {{$graduates->links()}}
                         <table id="example1" class="table table-hover text-nowrap">
                             <thead>
                                 <tr class="text-center">
@@ -115,6 +148,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{$graduates->links()}}
                     </div>
                 </div>
             </div>
@@ -140,6 +174,15 @@
 <script src="https://taweechai-bucket.s3-ap-southeast-1.amazonaws.com/upvc/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://taweechai-bucket.s3-ap-southeast-1.amazonaws.com/upvc/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="https://taweechai-bucket.s3-ap-southeast-1.amazonaws.com/upvc/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<!-- excel -->
+<script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
 <script>
     $(function() {
         $('#example1').DataTable({
@@ -150,7 +193,14 @@
             "info": false,
             "autoWidth": false,
             "responsive": true,
+            dom: 'Bfrtip',
+            pageLength: 100,
+            buttons: [{
+                extend: 'excel',
+                filename: 'รายชื่อบัณฑิต',
+            }, ]
         });
     });
 </script>
+
 @endsection

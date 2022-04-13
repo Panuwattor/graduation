@@ -6,13 +6,14 @@ use App\Branch;
 use App\Graduate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Imports\GraduateImport;
+use Excel;
 
 class GraduateController extends Controller
 {
     public function index()
     {
-        $graduates = Graduate::orderBy('numberGraduate')->get();
-
+        $graduates = Graduate::orderBy('numberGraduate')->paginate(100);
         return view('graduate.index', compact('graduates'));
     }
 
@@ -24,7 +25,7 @@ class GraduateController extends Controller
     }
     public function description($description)
     {
-        $graduates = Graduate::where('description',$description)->orderBy('numberGraduate')->get();
+        $graduates = Graduate::where('description',$description)->orderBy('numberGraduate')->paginate(100);
 
         return view('graduate.description', compact('graduates','description'));
     }
@@ -97,6 +98,32 @@ class GraduateController extends Controller
         }
 
         $graduates = Graduate::whereIn('id',request('ids'))->get();
-        return view('graduate.print', compact('graduates','branch'));
+        $count = ($graduates->count() / 10);
+        $pages = [];
+        for ($x = 0; $x <= $count; $x++) {
+            $pages[] = $x;
+        }
+
+        return view('graduate.print', compact('graduates','branch','pages'));
+    }
+
+    public function import()
+    {
+        Excel::import(new GraduateImport, request()->file('excel_file'));
+        alert()->success('สำเร็จ', 'นำเข้าแล้ว');
+        return back();
+    }
+
+    public function search()
+    {
+        $value = request('value');
+        $graduates = Graduate::where('name', 'like', '%' . $value . '%')->get();
+        if($graduates->count() < 1){
+            $graduates = Graduate::where('numberGraduate', 'like', '%' . $value . '%')->get();
+        }
+        if($graduates->count() < 1){
+            $graduates = Graduate::where('studentCode', 'like', '%' . $value . '%')->get();
+        }
+        return view('graduate.search', compact('graduates','value'));
     }
 }

@@ -47,7 +47,7 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="inputEmail3">พื้นหลัง</label> <code>W8.5cm. X H5.5cm.</code>
+                                                    <label for="inputEmail3">พื้นหลัง</label> <code>W8.9cm. X H6cm.</code>
                                                     <input type="file" class="form-control" name="background" multiple required>
                                                 </div>
                                             </div>
@@ -139,7 +139,7 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="inputEmail3">พื้นหลัง</label> <code>8.5 cm. X 5.5 cm.</code>
+                                                    <label for="inputEmail3">พื้นหลัง</label> <code>W8.9cm. X H6cm.</code>
                                                     <input type="file" class="form-control" name="background" multiple >
                                                 </div>
                                             </div>

@@ -11,14 +11,15 @@
     <link rel="icon" href="{{ asset('/admin/dist/img/cover-ssru.jpg') }}">
     <title>Print</title>
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Srisakdi:wght@700&display=swap');
-</style>
+        @import url('https://fonts.googleapis.com/css2?family=Srisakdi:wght@700&display=swap');
+    </style>
     <style>
         body {
             background: rgb(204, 204, 204);
             font-family: 'Srisakdi', cursive;
         }
-/* 
+
+        /* 
         page {
             background: white;
             display: block;
@@ -33,10 +34,10 @@
         } */
 
         .backg {
-            height: 217px;
-            width: 335px;
+            height: 236px;
+            width: 350px;
             background-image: url("/storage/{{$branch->background}}");
-            background-size: 335px 217px;
+            background-size: 350px 236px;
         }
 
         @media print {
@@ -59,28 +60,29 @@
 
 
             .backg {
-                height: 217px;
-                width: 335px;
+                height: 236px;
+                width: 350px;
                 background-image: url("/storage/{{$branch->background}}");
-                background-size: 335px 217px;
+                background-size: 350px 236px;
             }
         }
     </style>
 </head>
 
 <body>
+    @foreach($pages as $num=>$page)
     <page size="A4">
         <div class="container-fluid">
             <div class="row">
-                @foreach($graduates as $graduate)
+                @foreach($graduates->skip(10*$page)->take(10) as $graduate)
                 <div class="col-6">
                     <div class="card mt-5 backg ">
                         <div class="row">
                             <div class="col-6">
                             </div>
                             <div class="col-6">
-                                <img src="{{$graduate->photo}}" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">{{$graduate->name}}</h6>
+                                <img src="{{$graduate->photo}}" class="text-rigth" style="width: 88px; height: auto; margin-top: 75px; margin-left: 65px;" alt="...">
+                                <h6 class="text-right mr-2 mt-2" style="font-size: 7pt; color:blue;">{{$graduate->name}}</h6>
                                 <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">{{$graduate->numberGraduate}}</p>
                             </div>
                         </div>
@@ -91,279 +93,7 @@
         </div>
     </page>
     <p style="page-break-after: always;">&nbsp;</p>
-    <!-- <page size="A4">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </page> -->
-    <p style="page-break-after: always;">&nbsp;</p>
-    <!-- <page size="A4">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mt-5 backg ">
-                        <div class="row">
-                            <div class="col-6">
-                            </div>
-                            <div class="col-6">
-                                <img src="/0001.jpg" class="text-rigth" style="width: 80px; height: auto; margin-top: 70px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-1" style="font-size: 7pt; color:blue;">นางสาวพนิดา จงใจรักษ์</h6>
-                                <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">๐๐๐๑</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </page> -->
+    @endforeach
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -383,4 +113,5 @@
         window.print();
     });
 </script>
+
 </html>
