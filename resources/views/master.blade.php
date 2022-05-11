@@ -187,7 +187,7 @@
                 <img src="/admin/dist/img/cover-ssru.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">จัดการปริญญาบัณฑิต</span>
             </a>
-
+           
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
@@ -219,6 +219,12 @@
                             <a href="/graduate/branchs" class="nav-link  {{ (request()->is('graduate/branchs')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>รายชื่อตามสาขาปริญญา</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/addamployee" class="nav-link  {{ (request()->is('/addamployee')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>เพิ่มรายชื่อพนักงาน</p>
                             </a>
                         </li>
                         @can('user_manager')
