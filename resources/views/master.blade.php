@@ -221,12 +221,6 @@
                                 <p>รายชื่อตามสาขาปริญญา</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/addamployee" class="nav-link  {{ (request()->is('/addamployee')) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-book"></i>
-                                <p>เพิ่มรายชื่อพนักงาน</p>
-                            </a>
-                        </li>
                         @can('user_manager')
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link {{ (request()->is('graduate/admin/users')) ? 'active' : '' }} {{ (request()->is('graduate/admin/permissions')) ? 'active' : '' }} {{ (request()->is('graduate/admin/roles')) ? 'active' : '' }}">
