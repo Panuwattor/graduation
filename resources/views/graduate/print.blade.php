@@ -16,7 +16,7 @@
     <style>
         body {
             background: rgb(204, 204, 204);
-            font-family: 'Srisakdi', cursive;
+            font-family: "CRU-Rajabhat",sans-serif;
         }
 
         /* 
@@ -34,10 +34,10 @@
         } */
 
         .backg {
-            height: 236px;
-            width: 350px;
+            height: 232px;
+            width: 344px;
             background-image: url("/storage/{{$branch->background}}");
-            background-size: 350px 236px;
+            background-size: 344px 232px;
         }
 
         @media print {
@@ -59,12 +59,6 @@
             }
 
 
-            .backg {
-                height: 236px;
-                width: 350px;
-                background-image: url("/storage/{{$branch->background}}");
-                background-size: 350px 236px;
-            }
         }
     </style>
 </head>
@@ -81,8 +75,8 @@
                             <div class="col-6">
                             </div>
                             <div class="col-6">
-                                <img src="{{$graduate->photo}}" class="text-rigth" style="width: 88px; height: auto; margin-top: 75px; margin-left: 65px;" alt="...">
-                                <h6 class="text-right mr-2 mt-2" style="font-size: 7pt; color:blue;">{{$graduate->name}}</h6>
+                                <img src="{{$graduate->photo}}" class="text-rigth" style="width: 86px; height: auto; margin-top: 75px; margin-left: 65px;" alt="...">
+                                <h6 class="text-right mr-2 mt-2" style="font-size: 8pt; color:blue;">{{$graduate->name}}</h6>
                                 <p class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">{{$graduate->numberGraduate}}</p>
                             </div>
                         </div>
