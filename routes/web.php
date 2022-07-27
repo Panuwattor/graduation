@@ -21,6 +21,7 @@ Route::get('/branchs', 'BranchController@index');
 Route::post('/branch/update/{branch}', 'BranchController@update');
 Route::post('/branch', 'BranchController@store');
 
+Route::get('/addamployee', 'GraduateController@addamployee');
 Route::get('/graduates', 'GraduateController@index');
 Route::get('/graduate/branchs', 'GraduateController@branch');
 Route::get('/graduate/branch/{description}', 'GraduateController@description');

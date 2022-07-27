@@ -17,6 +17,13 @@ class GraduateController extends Controller
         return view('graduate.index', compact('graduates'));
     }
 
+    public function addamployee()
+    {
+       
+        return view('graduate.addamployee');
+    }
+
+
     public function branch()
     {
         $graduates = Graduate::select('description', DB::raw('count(*) as cnt'))->groupBy('description')->get();
