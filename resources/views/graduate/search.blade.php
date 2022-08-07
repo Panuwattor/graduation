@@ -81,32 +81,32 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">no</label>
-                        <div class="col-sm-10">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">no</label>
+                        <div class="col-sm-8">
                             <input type="text" class="form-control" name="numberGraduate" value="{{$graduate->numberGraduate}}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">name</label>
-                        <div class="col-sm-10">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">name</label>
+                        <div class="col-sm-8">
                             <input type="text" class="form-control" name="name" value="{{$graduate->name}}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">studentCode</label>
-                        <div class="col-sm-10">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">studentCode</label>
+                        <div class="col-sm-8">
                             <input type="text" class="form-control" name="studentCode" value="{{$graduate->studentCode}}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">description</label>
-                        <div class="col-sm-10">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">description</label>
+                        <div class="col-sm-8">
                             <input type="text" class="form-control" name="description" value="{{$graduate->description}}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">รูป URL</label>
-                        <div class="col-sm-10">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">รูป URL</label>
+                        <div class="col-sm-8">
                             <select class="form-control" name="photo">
                                 <option value="/student/{{$graduate->studentCode}}.JPG" @if($graduate->photo == "/student/$graduate->studentCode.JPG") selected @endif>/student/{{$graduate->studentCode}}.JPG</option>
                                 <option value="/student/{{$graduate->studentCode}}.jpg" @if($graduate->photo == "/student/$graduate->studentCode.jpg") selected @endif>/student/{{$graduate->studentCode}}.jpg</option>
