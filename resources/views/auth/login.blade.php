@@ -353,7 +353,7 @@
 
 			<!-- Icon -->
 			<div class="fadeIn first">
-				<img src="/login.jpg" class="m-2" id="icon" alt="User Icon">
+				<img src="/login.JPG" class="m-2" id="icon" alt="User Icon">
                 <h3>จัดการปริญญาบัณฑิต</h3>
 
 			</div>
