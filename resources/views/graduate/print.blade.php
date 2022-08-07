@@ -75,9 +75,9 @@
                             <div class="col-8">
                             </div>
                             <div class="col-4">
-                                <img class="text-center"  src="{{$graduate->photo}}" style="width: 87px; height: auto; margin-top: 75px;" alt="...">
-                                <h6 class="text-center" style="font-size: 7pt; color:blue; margin-top: 9px;">{{$graduate->name}}</h6>
-                                <h6 class="text-center" style="font-size: 7pt; color:blue;">{{$graduate->numberGraduate}}</h6>
+                                <img class="text-center"  src="{{$graduate->photo}}" style="width: 60px; height: 79px; margin-left: 29px; margin-top: 80px;" alt="...">
+                                <h6 class="text-center" style="font-size: 7pt; color:blue; margin-top: 35px;">{{$graduate->name}}</h6>
+                                <h6 class="text-center" style="font-size: 7pt; color:blue;">{{$graduate->numberThai}}</h6>
                             </div>
                         </div>
                     </div>

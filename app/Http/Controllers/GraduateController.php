@@ -133,4 +133,12 @@ class GraduateController extends Controller
         }
         return view('graduate.search', compact('graduates','value'));
     }
+
+    public function update_graduation(Graduate $graduation)
+    {
+        $graduation->update(request()->all());
+        
+        alert()->success('สำเร็จ', 'แก้ไขรายการเรียบร้อย');
+        return back();
+    }
 }

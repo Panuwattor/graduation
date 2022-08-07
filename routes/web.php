@@ -30,6 +30,8 @@ Route::post('/graduate', 'GraduateController@store');
 Route::post('/graduate/branch/{description}/prints', 'GraduateController@print');
 Route::post('/graduate/import/excel', 'GraduateController@import');
 Route::get('/search/graduate', 'GraduateController@search');
+Route::post('/graduation/{graduation}/update', 'GraduateController@update_graduation');
+
 
 Route::get('/graduate/admin/users', 'UserController@lists');
 Route::post('/graduate/admin/user/{user}', 'UserController@update');
