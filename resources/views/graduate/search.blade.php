@@ -60,60 +60,6 @@
                                         </button>
                                     </td>
                                 </tr>
-                               
-                                <div class="modal fade" id="modal-edit{{$graduate->id}}" style="display: none;" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h4 class="modal-title">แก้ไขข้อมูล</h4>
-                                        </div>
-                                        <form action="/graduation/{{$graduate->id}}/update" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="modal-body">
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-sm-2 col-form-label">no</label>
-                                                <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="numberGraduate" value="{{$graduate->numberGraduate}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-sm-2 col-form-label">name</label>
-                                                <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="name"  value="{{$graduate->name}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-sm-2 col-form-label">studentCode</label>
-                                                <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="studentCode"  value="{{$graduate->studentCode}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-sm-2 col-form-label">description</label>
-                                                <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="description"  value="{{$graduate->description}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-sm-2 col-form-label">รูป URL</label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" name="photo">
-                                                        <option value="/student/58131110025.JPG" @if($graduate->photo == '/student/58131110025.JPG') selected @endif>/student/58131110025.JPG</option>
-                                                        <option value="/student/58131110025.jpg" @if($graduate->photo == '/student/58131110025.jpg') selected @endif>/student/58131110025.jpg</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
                                 @endforeach
                             </tbody>
                         </table>
@@ -123,6 +69,62 @@
         </div>
     </div>
 </div>
+@foreach($graduates as $graduate)
+
+<div class="modal fade" id="modal-edit{{$graduate->id}}" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">แก้ไขข้อมูล</h4>
+            </div>
+            <form action="/graduation/{{$graduate->id}}/update" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">no</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="numberGraduate" value="{{$graduate->numberGraduate}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="name" value="{{$graduate->name}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">studentCode</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="studentCode" value="{{$graduate->studentCode}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">description</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="description" value="{{$graduate->description}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">รูป URL</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="photo">
+                                <option value="/student/{{$graduate->studentCode}}.JPG" @if($graduate->photo == "/student/$graduate->studentCode.JPG") selected @endif>/student/{{$graduate->studentCode}}.JPG</option>
+                                <option value="/student/{{$graduate->studentCode}}.jpg" @if($graduate->photo == "/student/$graduate->studentCode.jpg") selected @endif>/student/{{$graduate->studentCode}}.jpg</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+@endforeach
 @endsection
 
 
