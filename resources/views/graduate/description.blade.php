@@ -120,8 +120,8 @@
                         <label for="inputEmail3" class="col-sm-2 col-form-label">รูป URL</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="photo">
-                                <option value="/student/58131110025.JPG" @if($graduate->photo == '/student/58131110025.JPG') selected @endif>/student/58131110025.JPG</option>
-                                <option value="/student/58131110025.jpg" @if($graduate->photo == '/student/58131110025.jpg') selected @endif>/student/58131110025.jpg</option>
+                                <option value="/student/{{$graduate->studentCode}}.JPG" @if($graduate->photo == "/student/$graduate->studentCode.JPG") selected @endif>/student/{{$graduate->studentCode}}.JPG</option>
+                                <option value="/student/{{$graduate->studentCode}}.jpg" @if($graduate->photo == "/student/$graduate->studentCode.jpg") selected @endif>/student/{{$graduate->studentCode}}.jpg</option>
                             </select>
                         </div>
                     </div>
