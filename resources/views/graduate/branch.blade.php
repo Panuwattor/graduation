@@ -112,6 +112,13 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                                <tr class="text-center">
+                                    <th></th>
+                                    <th>รวม</th>
+                                    <th>{{$graduates->sum('cnt')}}</th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
