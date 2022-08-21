@@ -72,12 +72,10 @@
                 <div class="col-6">
                     <div class="card mt-5 backg ">
                         <div class="row">
-                            <div class="col-8">
-                            </div>
-                            <div class="col-4">
-                                <img class="text-center"  src="{{$graduate->photo}}" style="width: 60px; height: 79px; margin-left: 29px; margin-top: 80px;" alt="...">
-                                <h6 class="text-center" style="font-size: 7pt; color:blue; margin-top: 35px;">{{$graduate->name}}</h6>
-                                <h6 class="text-center" style="font-size: 7pt; color:blue;">{{$graduate->numberThai}}</h6>
+                            <div class="col-12 text-right">
+                                <img class="text-right"  src="{{$graduate->photo}}" style="width: 60px; height: 79px; margin-right: 5px; margin-top: 80px;" alt="...">
+                                <h6 class="text-right" style="font-size: 7pt; color:blue; margin-top: 35px; margin-right: 10px;">{{$graduate->name}}</h6>
+                                <h6 class="text-right" style="font-size: 7pt; color:blue; margin-right: 40px;">{{$graduate->numberThai}}</h6>
                             </div>
                         </div>
                     </div>
