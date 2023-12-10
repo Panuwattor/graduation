@@ -99,7 +99,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail3">รูปเมื่อเลือก URL</label>
-                                                    <input required type="text" class="form-control" id="photo_url" name="photo_url" placeholder="URL">
+                                                    <input  type="text" class="form-control" id="photo_url" name="photo_url" placeholder="URL">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail3">รูปเมื่อเลือก Server</label> <code>W249px X H314</code>
